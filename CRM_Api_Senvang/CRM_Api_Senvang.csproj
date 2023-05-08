@@ -7,6 +7,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Repositories\**" />
+    <Content Remove="Repositories\**" />
+    <EmbeddedResource Remove="Repositories\**" />
+    <None Remove="Repositories\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Repositories\Deal\DealRepository.cs" />
+    <Compile Include="Repositories\Deal\IDealRepository.cs" />
+    <Compile Include="Repositories\Customer\CustomerRepository.cs" />
+    <Compile Include="Repositories\Customer\ICustomerRepository.cs" />
+    <Compile Include="Repositories\Login\ILoginRepository.cs" />
+    <Compile Include="Repositories\Login\LoginRepository.cs" />
+    <Compile Include="Repositories\Org\IOrgRepository.cs" />
+    <Compile Include="Repositories\Org\OrgRepository.cs" />
+    <Compile Include="Repositories\Quotes\IQuotesRepository.cs" />
+    <Compile Include="Repositories\Quotes\QuotesRepository.cs" />
+    <Compile Include="Repositories\Statuses\IStatusesRepository.cs" />
+    <Compile Include="Repositories\Statuses\StatusesRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.16" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="6.29.0" />

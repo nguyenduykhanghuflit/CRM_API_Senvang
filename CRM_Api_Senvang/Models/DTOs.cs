@@ -2,70 +2,87 @@
 
 namespace CRM_Api_Senvang.Models
 {
-    public class StatusDTO
+
+    public class Quotes
     {
-        public int StatusId { get; set; }
-        public int Year { get; set; }
+
+        public int QuotesId { get; set; }
+
+    }
+    public class Deal
+    {
+
+        public int DealId { get; set; }
+
     }
 
-
-
-    public class Status
+    public class User
     {
-        public int StatusId { get; set; }
+
+        public string Username { get; set; }
+
     }
 
-
-    public class DealDTO
+    public class UserLoginDto : User
     {
-        [Required(ErrorMessage = "Id is required")]
+
+        public string Password { get; set; }
+    }
+
+    public class PubObj
+    {
+        public int autoId { get; set; }
+    }
+
+    public class QuotesDto : Quotes
+    {
+
+
+
+    }
+
+    public class NewDealDto
+    {
+        public int OppTypeId { get; set; }
+        public string Title { get; set; }
+        public int? ObjectID { get; set; }
+        public string CustName { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public DateTime? Openning { get; set; }
+        public DateTime? DeployDate { get; set; }
+
+    }
+
+    public class UpdateDealDto
+    {
         public int Id { get; set; }
-
-        public int? Status { get; set; }
-
-        public int? SaleMenId { get; set; }
-
+        public int? OppTypeId { get; set; }
         public string? Title { get; set; }
-
-        public string? CustName { get; set; }
-
-        public string? Phone { get; set; }
-
-        public string? Email { get; set; }
-
+        public DateTime? Openning { get; set; }
+        public DateTime? DeployDate { get; set; }
+        public int? StatusId { get; set; }
         public string? Notes { get; set; }
 
-
     }
 
-    public class CRM_Deal
+    public class NewCustomer
     {
-        public int Id { get; set; }
-
-        public int? Status { get; set; }
-
-        public int? SaleMenId { get; set; }
-
-        public string? Title { get; set; }
-
-        public string? CustName { get; set; }
-
-        public string? Phone { get; set; }
-
-        public string? Email { get; set; }
-
 
     }
 
-    public class DealStatusDTO
+    public class FindCustomerDto
     {
-        public int dealId { get; set; }
-        public int statusId { get; set; }
+        public string info { get; set; }
     }
-    public class DealNoteDTO
+
+    public class QueryParam
     {
-        public int dealId { get; set; }
-        public string? notes { get; set; }
+        public int? PageNumber { get; set; }
+        public int? PageSize { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
     }
+
 
 }
