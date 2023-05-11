@@ -22,6 +22,8 @@ namespace CRM_Api_Senvang.Helpers
             try
             {
                 var resultList = new List<dynamic>();
+
+
                 _db.OpenConnection();
 
                 using (var command = _db.CreateCommand(query, commandType, sqlParameters))
@@ -39,6 +41,7 @@ namespace CRM_Api_Senvang.Helpers
 
 
                 result.Add("Data", resultList);
+
 
                 return result;
             }

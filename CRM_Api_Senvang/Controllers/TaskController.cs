@@ -42,46 +42,7 @@ namespace CRM_Api_Senvang.Controllers
             return Ok(_taskRepository.GetTaskDetail(taskDto).HandleResponse());
         }
 
-        [HttpPost("/api/admin/task/create")]
-        /*  [Authorize(Policy = "AdminPolicy")]*/
-        public IActionResult AdminCreateTask(List<NewTaskDto> listTask)
-        {
-            string username = _tokenHelper.GetUsername(HttpContext);
 
-            List<string> createTaskError = new();
-            List<dynamic> createTaskSuccess = new();
-            listTask.ForEach(item =>
-            {
-                var task = _taskRepository.AdminCreateTask(item, username);
-                if (task.ErrCode < 0)
-                {
-                    string msg = $"{task.Message}, Taskname: {item.TaskName}, AssignToUser: {item.AssignToUser} ";
-                    createTaskError.Add(msg);
-                }
-                else
-                {
-                    createTaskSuccess.Add(task.Data);
-                }
-
-            });
-            Dictionary<string, dynamic> result = new()
-            {
-                { "CreateTaskError", createTaskError },
-                { "CreateTaskSuccess", createTaskSuccess }
-            };
-            int errCode = createTaskError.Count > 0 ? 1 : 0;
-            ResponseHelper responseHelper = new(errCode, "Success", result);
-            return Ok(responseHelper.HandleResponse());
-
-        }
-
-        [HttpPost("/api/admin/task/update")]
-        [Authorize(Policy = "AdminPolicy")]
-        public IActionResult AdminUpdateUserOrStatus(UpdateTaskStatusOrUserDto statusOrUserDto)
-        {
-            string username = _tokenHelper.GetUsername(HttpContext);
-            return Ok(_taskRepository.AdminUpdateUserOrStatus(statusOrUserDto, username));
-        }
 
         [HttpPost("/api/user/task/update")]
         [Authorize]
@@ -90,6 +51,8 @@ namespace CRM_Api_Senvang.Controllers
             string username = _tokenHelper.GetUsername(HttpContext);
             return Ok(_taskRepository.UserUpdateProgressOrStatus(progressOrUserDto, username));
         }
+
+
 
 
     }

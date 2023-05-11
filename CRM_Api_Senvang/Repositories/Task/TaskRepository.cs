@@ -35,7 +35,8 @@ namespace CRM_Api_Senvang.Repositories.Task
                 new SqlParameter(parameterName: "@Priority", value: taskDto.Priority),
                 new SqlParameter(parameterName: "@username", value: username),
             };
-            QueryRespone task = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone task = utils.Query(sqlQuery, commandType, parameters.ToArray());
             return task.HandleQueryResponese();
         }
 
@@ -49,7 +50,8 @@ namespace CRM_Api_Senvang.Repositories.Task
                 new SqlParameter(parameterName: "@Status", value: statusOrUserDto.Status),
                 new SqlParameter(parameterName: "@username", value: username),
             };
-            QueryRespone task = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone task = utils.Query(sqlQuery, commandType, parameters.ToArray());
             return task.HandleQueryResponese();
         }
 
@@ -61,23 +63,24 @@ namespace CRM_Api_Senvang.Repositories.Task
                 new SqlParameter(parameterName: "@TaskId", value: taskDto.TaskId)
 
             };
-            QueryRespone task = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone task = utils.Query(sqlQuery, commandType, parameters.ToArray());
             return task.HandleQueryResponese();
         }
 
         public ResponseHelper GetTaskList()
         {
             string sqlQuery = "khangGetTaskBasic";
-
-            QueryRespone task = utils.Query(sqlQuery, CommandType.StoredProcedure);
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone task = utils.Query(sqlQuery, commandType);
             return task.HandleQueryResponese();
         }
 
         public ResponseHelper GetTaskTypeList()
         {
             string sqlQuery = "khangGetTaskType";
-
-            QueryRespone taskType = utils.Query(sqlQuery, CommandType.StoredProcedure);
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone taskType = utils.Query(sqlQuery, commandType);
             return taskType.HandleQueryResponese();
         }
 
@@ -91,7 +94,21 @@ namespace CRM_Api_Senvang.Repositories.Task
                 new SqlParameter(parameterName: "@Status", value: progressOrUserDto.Status),
                 new SqlParameter(parameterName: "@username", value: username),
             };
-            QueryRespone task = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone task = utils.Query(sqlQuery, commandType, parameters.ToArray());
+            return task.HandleQueryResponese();
+        }
+
+        public ResponseHelper AdminConfirmSuccess(TaskDto taskDto, string username)
+        {
+            string sqlQuery = "khangAdminConFirmTask";
+            List<SqlParameter> parameters = new()
+            {
+                new SqlParameter(parameterName: "@taskId", value: taskDto.TaskId),
+                new SqlParameter(parameterName: "@username", value: username),
+            };
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone task = utils.Query(sqlQuery, commandType, parameters.ToArray());
             return task.HandleQueryResponese();
         }
     }
