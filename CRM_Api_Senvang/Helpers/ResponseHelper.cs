@@ -4,9 +4,11 @@ namespace CRM_Api_Senvang.Helpers
 {
     public class ResponseHelper
     {
-        int ErrCode { get; set; }
-        string? Message { get; set; }
-        object? Data { get; set; }
+        public int ErrCode { get; set; }
+        public string? Message { get; set; }
+        public object? Data { get; set; }
+
+        public ResponseHelper() { }
 
         public ResponseHelper(int errCode, string? message, object? data)
         {

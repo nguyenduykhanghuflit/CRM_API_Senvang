@@ -11,13 +11,15 @@ namespace CRM_Api_Senvang.Helpers
     {
         private readonly string _secretKey;
 
+
+
         public TokenHelper(IConfiguration configuration)
         {
 
             _secretKey = configuration["Jwt:Key"];
-        }
 
-        public string GenerateToken(string username)
+        }
+        public string GenerateToken(string username, string role)
         {
             var jwtTokenHandler = new JwtSecurityTokenHandler();
 
@@ -27,9 +29,10 @@ namespace CRM_Api_Senvang.Helpers
             {
                 Subject = new ClaimsIdentity(new[] {
 
-                    new Claim("UserName", username),
+                    new Claim(ClaimTypes.NameIdentifier, username),
+                    new Claim(ClaimTypes.Role, role),
                 }),
-                Expires = DateTime.UtcNow.AddDays(7),
+                Expires = DateTime.UtcNow.AddDays(14),
 
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(secretKeyBytes), SecurityAlgorithms.HmacSha512Signature)
             };
@@ -37,6 +40,13 @@ namespace CRM_Api_Senvang.Helpers
             var token = jwtTokenHandler.CreateToken(tokenDescription);
 
             return jwtTokenHandler.WriteToken(token);
+        }
+
+        public string GetUsername(HttpContext httpContext)
+        {
+
+            return httpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "";
+
         }
     }
 }
