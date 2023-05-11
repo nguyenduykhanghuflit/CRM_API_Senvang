@@ -36,9 +36,10 @@ namespace CRM_Api_Senvang.Repositories.Customer
                         new SqlParameter() {ParameterName= "@username",Value=username }
                     };
 
+                var commandType = CommandType.StoredProcedure;
                 databaseManager.OpenConnection();
                 List<int> autoIds = new List<int>();
-                using (var command = databaseManager.CreateCommand("khangspCreateCustomer", CommandType.StoredProcedure, sqlParameters.ToArray()))
+                using (var command = databaseManager.CreateCommand("khangspCreateCustomer", commandType, sqlParameters.ToArray()))
                 {
                     using SqlDataReader reader = command.ExecuteReader();
 
@@ -66,7 +67,9 @@ namespace CRM_Api_Senvang.Repositories.Customer
             {
                 new SqlParameter(parameterName: "@input", value: input)
             };
-            QueryRespone customer = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
+
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone customer = utils.Query(sqlQuery, commandType, parameters.ToArray());
             return customer.HandleQueryResponese();
 
         }

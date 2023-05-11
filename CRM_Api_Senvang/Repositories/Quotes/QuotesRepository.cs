@@ -31,7 +31,8 @@ namespace CRM_Api_Senvang.Repositories.Quotes
                 new SqlParameter(parameterName: "@StartDate", value: queryParam.StartDate),
                 new SqlParameter(parameterName: "@EndDate", value: queryParam.EndDate)
             };
-            QueryRespone queryRespone = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone queryRespone = utils.Query(sqlQuery, commandType, parameters.ToArray());
 
             return queryRespone.HandleQueryResponese();
 
@@ -44,31 +45,31 @@ namespace CRM_Api_Senvang.Repositories.Quotes
             {
                 new SqlParameter(parameterName: "@quotesId", value: quotesId)
             };
-            QueryRespone quotes = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone quotes = utils.Query(sqlQuery, commandType, parameters.ToArray());
 
-            return quotes.HandleQueryResponese();
 
-            /* List<dynamic>? quotesData = (List<dynamic>?)quotes.Data;
-             if (quotesData != null)
-             {
-                 foreach (var item in quotesData)
-                 {
-                     List<SqlParameter> parametersDetail = new()
+            List<dynamic>? quotesData = (List<dynamic>?)quotes.Data;
+            if (quotesData != null)
+            {
+                foreach (var item in quotesData)
+                {
+                    List<SqlParameter> parametersDetail = new()
                      {
                          new SqlParameter(parameterName: "@quotesId", value: item["QuotesId"])
                      };
 
-                     QueryRespone quotesDetail = utils.Query("khangGetQuotesDetail", CommandType.StoredProcedure, parametersDetail.ToArray());
-                     item["Detail"] = quotesDetail.Data;
-                 }
+                    QueryRespone quotesDetail = utils.Query("khangGetQuotesDetail", CommandType.StoredProcedure, parametersDetail.ToArray());
+                    item["Detail"] = quotesDetail.Data;
+                }
 
-                 return quotes.HandleQueryResponese();
-             }
+                return quotes.HandleQueryResponese();
+            }
 
-             else
-             {
-                 return quotes.HandleQueryResponese();
-             }*/
+            else
+            {
+                return quotes.HandleQueryResponese();
+            }
 
 
 
@@ -81,7 +82,8 @@ namespace CRM_Api_Senvang.Repositories.Quotes
             {
                 new SqlParameter(parameterName: "@DealId", value: dealId)
             };
-            QueryRespone quotesTask = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone quotesTask = utils.Query(sqlQuery, commandType, parameters.ToArray());
             return quotesTask.HandleQueryResponese();
         }
 
@@ -98,7 +100,8 @@ namespace CRM_Api_Senvang.Repositories.Quotes
                 new SqlParameter(parameterName: "@Deposits", value: quotesDto.Deposits),
 
             };
-            QueryRespone respone = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone respone = utils.Query(sqlQuery, commandType, parameters.ToArray());
 
 
 
@@ -117,7 +120,8 @@ namespace CRM_Api_Senvang.Repositories.Quotes
                 new SqlParameter(parameterName: "@Deposits", value: quotesDto.Deposits),
                 new SqlParameter(parameterName: "@username", value: username),
             };
-            QueryRespone respone = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone respone = utils.Query(sqlQuery, commandType, parameters.ToArray());
 
 
 
@@ -133,7 +137,8 @@ namespace CRM_Api_Senvang.Repositories.Quotes
                new SqlParameter(parameterName: "@statusId", value: statusId),
                 new SqlParameter(parameterName: "@username", value: username),
             };
-            QueryRespone respone = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone respone = utils.Query(sqlQuery, commandType, parameters.ToArray());
 
 
 
@@ -142,7 +147,18 @@ namespace CRM_Api_Senvang.Repositories.Quotes
 
         public ResponseHelper DeleteQuotes(int quotesId, string username)
         {
-            throw new NotImplementedException();
+            string sqlQuery = "khangDeleteQuotes";
+            List<SqlParameter> parameters = new()
+            {
+                new SqlParameter(parameterName: "@quotesId", value: quotesId),
+                new SqlParameter(parameterName: "@username", value: username),
+            };
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone respone = utils.Query(sqlQuery, commandType, parameters.ToArray());
+
+
+
+            return respone.HandleQueryResponese();
         }
     }
 }

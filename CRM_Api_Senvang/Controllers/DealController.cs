@@ -93,13 +93,6 @@ namespace CRM_Api_Senvang.Controllers
             return Ok(_dealRepository.GetDealDetail(deal.DealId).HandleResponse());
         }
 
-        [HttpPost("/api/deal/status/update")]
-        [Authorize]
-        public IActionResult UpdateDealStatus(UpdateDealStatus deal)
-        {
-            string username = _tokenHelper.GetUsername(HttpContext);
-            return Ok(_dealRepository.UpdateDealStatus(deal.DealId, deal.StatusId, username).HandleResponse());
-        }
 
         [HttpPost("/api/deal/delete")]
         [Authorize]

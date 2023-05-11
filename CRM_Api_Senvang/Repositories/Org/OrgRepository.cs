@@ -45,7 +45,8 @@ namespace CRM_Api_Senvang.Repositories.Org
                         new SqlParameter() {ParameterName= "@username", Value =username},
                         new SqlParameter() {ParameterName= "@orgId",Value=orgId }
                     };
-            QueryRespone quotesTask = utils.Query(sqlQuery, CommandType.StoredProcedure, sqlParameters.ToArray());
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone quotesTask = utils.Query(sqlQuery, commandType, sqlParameters.ToArray());
             return quotesTask.HandleQueryResponese();
         }
     }

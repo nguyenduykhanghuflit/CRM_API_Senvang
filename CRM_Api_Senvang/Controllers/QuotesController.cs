@@ -75,23 +75,16 @@ namespace CRM_Api_Senvang.Controllers
             return Ok(_quotesRepository.UpdateQuotes(quotesDto, username).HandleResponse());
         }
 
-        [HttpPost("/api/quotes/status/update")]
-        [Authorize]
-        public IActionResult UpdateQuotesStatus(UpdateQuotesStatus quotesDto)
-        {
-            string username = _tokenHelper.GetUsername(HttpContext);
 
-            return Ok(_quotesRepository.UpdateQuotesStatus(quotesDto.QuotesId, quotesDto.StatusId, username).HandleResponse());
-        }
 
 
 
         [HttpPost("/api/quotes/delete")]
         [Authorize]
-        public IActionResult DeleteQuotes(Deal deal)
+        public IActionResult DeleteQuotes(Quotes quotes)
         {
             string username = _tokenHelper.GetUsername(HttpContext);
-            return Ok(_quotesRepository.DeleteQuotes(deal.DealId, username).HandleResponse());
+            return Ok(_quotesRepository.DeleteQuotes(quotes.QuotesId, username).HandleResponse());
         }
     }
 }

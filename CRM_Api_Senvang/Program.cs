@@ -42,12 +42,12 @@ builder.Services.AddCors(options =>
                       });
 });
 
-builder.Services.AddSingleton<DatabaseManager>();
+builder.Services.AddScoped<DatabaseManager>();
 
-builder.Services.AddSingleton<SqlHelper>();
-
-builder.Services.AddSingleton<TokenHelper>();
-builder.Services.AddSingleton<Utils>();
+builder.Services.AddScoped<SqlHelper>();
+//đừng sử dụng AddSingleton :))))))))))))))
+builder.Services.AddScoped<TokenHelper>();
+builder.Services.AddScoped<Utils>();
 builder.Services.AddScoped<ILoginRepository, LoginRepository>();
 builder.Services.AddScoped<IQuotesRepository, QuotesRepository>();
 builder.Services.AddScoped<IStatusesRepository, StatusesRepository>();

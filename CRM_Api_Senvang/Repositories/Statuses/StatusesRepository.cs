@@ -16,6 +16,7 @@ namespace CRM_Api_Senvang.Repositories.Statuses
             this.databaseManager = databaseManager;
 
         }
+
         public ResponseHelper GetDealStatus()
         {
             string sqlQuery = "khangGetDealStatus";

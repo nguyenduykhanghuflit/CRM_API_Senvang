@@ -37,8 +37,12 @@ namespace CRM_Api_Senvang.Repositories.Deal
                 new SqlParameter(parameterName: "@username", value: username),
                 new SqlParameter(parameterName: "@openning", value: deal.Openning),
                 new SqlParameter(parameterName: "@deploydate", value: deal.DeployDate),
+                new SqlParameter(parameterName: "@notes", value: deal.Notes),
+                new SqlParameter(parameterName: "@SaleMenId", value: deal.SaleMenId)
             };
-            QueryRespone respone = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
+
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone respone = utils.Query(sqlQuery, commandType, parameters.ToArray());
 
 
 
@@ -58,8 +62,10 @@ namespace CRM_Api_Senvang.Repositories.Deal
                 new SqlParameter(parameterName: "@deploydate", value: deal.DeployDate),
                 new SqlParameter(parameterName: "@Notes", value: deal.Notes),
                 new SqlParameter(parameterName: "@username", value: username),
+                 new SqlParameter(parameterName: "@SaleMenId", value: deal.SaleMenId)
             };
-            QueryRespone respone = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone respone = utils.Query(sqlQuery, commandType, parameters.ToArray());
 
 
 
@@ -95,7 +101,16 @@ namespace CRM_Api_Senvang.Repositories.Deal
 
         public ResponseHelper DeleteDeal(int dealId, string username)
         {
-            throw new NotImplementedException();
+            string sqlQuery = "khangDeleteDeal";
+            List<SqlParameter> parameters = new()
+            {
+                new SqlParameter(parameterName: "@dealId", value: dealId),
+                new SqlParameter(parameterName: "@username", value: username),
+            };
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone respone = utils.Query(sqlQuery, commandType, parameters.ToArray());
+
+            return respone.HandleQueryResponese();
         }
 
         public ResponseHelper UpdateDealStatus(int dealId, int statusId, string username)
@@ -108,7 +123,8 @@ namespace CRM_Api_Senvang.Repositories.Deal
                 new SqlParameter(parameterName: "@statusId", value: statusId),
                 new SqlParameter(parameterName: "@username", value: username),
             };
-            QueryRespone respone = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone respone = utils.Query(sqlQuery, commandType, parameters.ToArray());
 
 
 

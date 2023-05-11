@@ -51,6 +51,8 @@ namespace CRM_Api_Senvang.Models
         public string Email { get; set; }
         public DateTime? Openning { get; set; }
         public DateTime? DeployDate { get; set; }
+        public int? SaleMenId { get; set; }
+        public string? Notes { get; set; }
 
     }
 
@@ -62,6 +64,7 @@ namespace CRM_Api_Senvang.Models
         public DateTime? Openning { get; set; }
         public DateTime? DeployDate { get; set; }
         public string? Notes { get; set; }
+        public int? SaleMenId { get; set; }
 
     }
 
