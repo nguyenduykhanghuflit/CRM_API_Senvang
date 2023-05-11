@@ -20,10 +20,18 @@ namespace CRM_Api_Senvang.Repositories.Quotes
 
         }
 
-        public ResponseHelper GetQuotesDeal()
+        public ResponseHelper GetQuotesDeal(QueryParam queryParam, string username)
         {
             string sqlQuery = "khangGetDealQuotes";
-            QueryRespone queryRespone = utils.Query(sqlQuery);
+            List<SqlParameter> parameters = new()
+            {
+                new SqlParameter(parameterName: "@username", value: username),
+                new SqlParameter(parameterName: "@PageNumber", value: queryParam.PageNumber),
+                new SqlParameter(parameterName: "@PageSize", value: queryParam.PageSize),
+                new SqlParameter(parameterName: "@StartDate", value: queryParam.StartDate),
+                new SqlParameter(parameterName: "@EndDate", value: queryParam.EndDate)
+            };
+            QueryRespone queryRespone = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
 
             return queryRespone.HandleQueryResponese();
 
@@ -38,27 +46,29 @@ namespace CRM_Api_Senvang.Repositories.Quotes
             };
             QueryRespone quotes = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
 
-            List<dynamic>? quotesData = (List<dynamic>?)quotes.Data;
-            if (quotesData != null)
-            {
-                foreach (var item in quotesData)
-                {
-                    List<SqlParameter> parametersDetail = new()
-                    {
-                        new SqlParameter(parameterName: "@quotesId", value: item["QuotesId"])
-                    };
+            return quotes.HandleQueryResponese();
 
-                    QueryRespone quotesDetail = utils.Query("khangGetQuotesDetail", CommandType.StoredProcedure, parametersDetail.ToArray());
-                    item["Detail"] = quotesDetail.Data;
-                }
+            /* List<dynamic>? quotesData = (List<dynamic>?)quotes.Data;
+             if (quotesData != null)
+             {
+                 foreach (var item in quotesData)
+                 {
+                     List<SqlParameter> parametersDetail = new()
+                     {
+                         new SqlParameter(parameterName: "@quotesId", value: item["QuotesId"])
+                     };
 
-                return quotes.HandleQueryResponese();
-            }
+                     QueryRespone quotesDetail = utils.Query("khangGetQuotesDetail", CommandType.StoredProcedure, parametersDetail.ToArray());
+                     item["Detail"] = quotesDetail.Data;
+                 }
 
-            else
-            {
-                return quotes.HandleQueryResponese();
-            }
+                 return quotes.HandleQueryResponese();
+             }
+
+             else
+             {
+                 return quotes.HandleQueryResponese();
+             }*/
 
 
 
@@ -75,6 +85,64 @@ namespace CRM_Api_Senvang.Repositories.Quotes
             return quotesTask.HandleQueryResponese();
         }
 
+        public ResponseHelper CreateQuotes(NewQuotesDto quotesDto, string username)
+        {
+            string sqlQuery = "khangCreateQuotesByDeal";
+            List<SqlParameter> parameters = new()
+            {
+                new SqlParameter(parameterName: "@username", value: username),
+                new SqlParameter(parameterName: "@DealId", value: quotesDto.DealId),
+                new SqlParameter(parameterName: "@HallId", value: quotesDto.HallId),
+                new SqlParameter(parameterName: "@GuestQty", value: quotesDto.GuestQty),
+                new SqlParameter(parameterName: "@TableQty", value: quotesDto.TableQty),
+                new SqlParameter(parameterName: "@Deposits", value: quotesDto.Deposits),
 
+            };
+            QueryRespone respone = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
+
+
+
+            return respone.HandleQueryResponese();
+        }
+
+        public ResponseHelper UpdateQuotes(UpdateQuotesDto quotesDto, string username)
+        {
+            string sqlQuery = "khangUpdateQuotes";
+            List<SqlParameter> parameters = new()
+            {
+                new SqlParameter(parameterName: "@Id", value: quotesDto.Id),
+              new SqlParameter(parameterName: "@HallId", value: quotesDto.HallId),
+                new SqlParameter(parameterName: "@GuestQty", value: quotesDto.GuestQty),
+                new SqlParameter(parameterName: "@TableQty", value: quotesDto.TableQty),
+                new SqlParameter(parameterName: "@Deposits", value: quotesDto.Deposits),
+                new SqlParameter(parameterName: "@username", value: username),
+            };
+            QueryRespone respone = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
+
+
+
+            return respone.HandleQueryResponese();
+        }
+
+        public ResponseHelper UpdateQuotesStatus(int quotesId, int statusId, string username)
+        {
+            string sqlQuery = "khangUpdateQuotesStatus";
+            List<SqlParameter> parameters = new()
+            {
+                new SqlParameter(parameterName: "@quotesId", value: quotesId),
+               new SqlParameter(parameterName: "@statusId", value: statusId),
+                new SqlParameter(parameterName: "@username", value: username),
+            };
+            QueryRespone respone = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
+
+
+
+            return respone.HandleQueryResponese();
+        }
+
+        public ResponseHelper DeleteQuotes(int quotesId, string username)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

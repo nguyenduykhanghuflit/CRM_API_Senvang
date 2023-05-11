@@ -56,7 +56,6 @@ namespace CRM_Api_Senvang.Repositories.Deal
                 new SqlParameter(parameterName: "@OppTypeId", value: deal.OppTypeId),
                 new SqlParameter(parameterName: "@openning", value: deal.Openning),
                 new SqlParameter(parameterName: "@deploydate", value: deal.DeployDate),
-                new SqlParameter(parameterName: "@Status", value: deal.StatusId),
                 new SqlParameter(parameterName: "@Notes", value: deal.Notes),
                 new SqlParameter(parameterName: "@username", value: username),
             };
@@ -99,5 +98,22 @@ namespace CRM_Api_Senvang.Repositories.Deal
             throw new NotImplementedException();
         }
 
+        public ResponseHelper UpdateDealStatus(int dealId, int statusId, string username)
+        {
+
+            string sqlQuery = "khangUpdateDealStatus";
+            List<SqlParameter> parameters = new()
+            {
+                new SqlParameter(parameterName: "@dealId", value: dealId),
+                new SqlParameter(parameterName: "@statusId", value: statusId),
+                new SqlParameter(parameterName: "@username", value: username),
+            };
+            QueryRespone respone = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
+
+
+
+            return respone.HandleQueryResponese();
+
+        }
     }
 }

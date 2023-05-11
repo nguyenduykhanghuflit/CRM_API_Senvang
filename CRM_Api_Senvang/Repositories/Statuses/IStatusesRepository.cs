@@ -9,5 +9,6 @@ namespace CRM_Api_Senvang.Repositories.Statuses
         ResponseHelper GetDealStatus();
         ResponseHelper GetPriority();
         ResponseHelper GetOppType();
+        ResponseHelper GetHall();
     }
 }

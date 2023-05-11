@@ -26,6 +26,8 @@
     <Compile Include="Repositories\Quotes\QuotesRepository.cs" />
     <Compile Include="Repositories\Statuses\IStatusesRepository.cs" />
     <Compile Include="Repositories\Statuses\StatusesRepository.cs" />
+    <Compile Include="Repositories\Task\ITask.cs" />
+    <Compile Include="Repositories\Task\TaskRepository.cs" />
   </ItemGroup>
 
   <ItemGroup>

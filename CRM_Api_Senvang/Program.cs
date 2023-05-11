@@ -19,6 +19,7 @@ using System.Reflection;
 using CRM_Api_Senvang.Middleware;
 using CRM_Api_Senvang.Repositories.Customer;
 using CRM_Api_Senvang.Repositories.Deal;
+using CRM_Api_Senvang.Repositories.Task;
 
 var builder = WebApplication.CreateBuilder(args);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -53,6 +54,7 @@ builder.Services.AddScoped<IStatusesRepository, StatusesRepository>();
 builder.Services.AddScoped<IOrgRepository, OrgRepository>();
 builder.Services.AddScoped<IDealRepository, DealRepository>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<ITask, TaskRepository>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o =>
 {
     o.TokenValidationParameters = new TokenValidationParameters

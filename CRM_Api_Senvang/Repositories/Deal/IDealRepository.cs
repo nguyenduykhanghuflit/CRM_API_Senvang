@@ -15,5 +15,7 @@ namespace CRM_Api_Senvang.Repositories.Deal
         ResponseHelper GetDealDetail(int dealId);
 
         ResponseHelper DeleteDeal(int dealId, string username);
+
+        ResponseHelper UpdateDealStatus(int dealId, int statusId, string username);
     }
 }

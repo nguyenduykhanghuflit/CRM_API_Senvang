@@ -62,5 +62,12 @@ namespace CRM_Api_Senvang.Controllers
         {
             return Ok(_statusesRepository.GetOppType().HandleResponse());
         }
+
+        [HttpGet("/api/hall")]
+        [Authorize]
+        public IActionResult GetHall()
+        {
+            return Ok(_statusesRepository.GetHall().HandleResponse());
+        }
     }
 }

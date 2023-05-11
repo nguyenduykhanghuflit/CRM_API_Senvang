@@ -24,6 +24,14 @@ namespace CRM_Api_Senvang.Repositories.Statuses
             return queryRespone.HandleQueryResponese();
         }
 
+        public ResponseHelper GetHall()
+        {
+            string sqlQuery = "khangGetHall";
+            QueryRespone queryRespone = utils.Query(sqlQuery);
+
+            return queryRespone.HandleQueryResponese();
+        }
+
         public ResponseHelper GetOppType()
         {
             string sqlQuery = "khangGetOppType";

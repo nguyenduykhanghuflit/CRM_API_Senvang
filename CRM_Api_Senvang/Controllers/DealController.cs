@@ -65,8 +65,6 @@ namespace CRM_Api_Senvang.Controllers
             return Ok(_dealRepository.UpdateDeal(dealDto, username).HandleResponse());
         }
 
-
-
         [HttpPost("/api/deal/user")]
         [Authorize]
         public IActionResult GetDealByUser(QueryParam queryParam)
@@ -94,5 +92,22 @@ namespace CRM_Api_Senvang.Controllers
 
             return Ok(_dealRepository.GetDealDetail(deal.DealId).HandleResponse());
         }
+
+        [HttpPost("/api/deal/status/update")]
+        [Authorize]
+        public IActionResult UpdateDealStatus(UpdateDealStatus deal)
+        {
+            string username = _tokenHelper.GetUsername(HttpContext);
+            return Ok(_dealRepository.UpdateDealStatus(deal.DealId, deal.StatusId, username).HandleResponse());
+        }
+
+        [HttpPost("/api/deal/delete")]
+        [Authorize]
+        public IActionResult DeleteDeal(Deal deal)
+        {
+            string username = _tokenHelper.GetUsername(HttpContext);
+            return Ok(_dealRepository.DeleteDeal(deal.DealId, username).HandleResponse());
+        }
+
     }
 }
