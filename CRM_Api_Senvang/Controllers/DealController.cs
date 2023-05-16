@@ -85,6 +85,27 @@ namespace CRM_Api_Senvang.Controllers
             return Ok(_dealRepository.GetDealCreateByUser(queryParam, username).HandleResponse());
         }
 
+
+        [HttpPost("/api/deal/assign/user")]
+        [Authorize]
+        public IActionResult GetDealAssginToUser(QueryParam queryParam)
+        {
+
+            string username = _tokenHelper.GetUsername(HttpContext);
+
+            if (queryParam.PageSize > 20 || queryParam.PageSize < 1)
+            {
+                queryParam.PageSize = 20;
+            }
+
+            if (queryParam.PageNumber < 1)
+            {
+                queryParam.PageNumber = 1;
+            }
+
+            return Ok(_dealRepository.GetDealAssignByUser(queryParam, username).HandleResponse());
+        }
+
         [HttpPost("/api/deal/detail")]
         [Authorize]
         public IActionResult GetDealDetail(Deal deal)

@@ -92,5 +92,43 @@ namespace CRM_Api_Senvang.Controllers
             return Ok(_taskRepository.AdminConfirmSuccess(taskDto, username));
         }
 
+        [HttpPost("/api/admin/quotes")]
+        [Authorize(Policy = "AdminPolicy")]
+        public IActionResult AdminGetAllQuotes(QueryParam queryParam)
+        {
+            string username = _tokenHelper.GetUsername(HttpContext);
+
+            if (queryParam.PageSize > 20 || queryParam.PageSize < 1)
+            {
+                queryParam.PageSize = 20;
+            }
+
+            if (queryParam.PageNumber < 1)
+            {
+                queryParam.PageNumber = 1;
+            }
+            return Ok(_quotesRepository.AdminGetAllQuotes(queryParam, username).HandleResponse());
+        }
+
+        [HttpPost("/api/admin/deals")]
+        [Authorize(Policy = "AdminPolicy")]
+        public IActionResult AdminGetAllDeal(QueryParam queryParam)
+        {
+
+            string username = _tokenHelper.GetUsername(HttpContext);
+
+            if (queryParam.PageSize > 20 || queryParam.PageSize < 1)
+            {
+                queryParam.PageSize = 20;
+            }
+
+            if (queryParam.PageNumber < 1)
+            {
+                queryParam.PageNumber = 1;
+            }
+
+            return Ok(_dealRepository.AdminGetAllDeal(queryParam, username).HandleResponse());
+        }
+
     }
 }

@@ -7,6 +7,10 @@ namespace CRM_Api_Senvang.Repositories.Quotes
     {
         ResponseHelper GetQuotesDeal(QueryParam queryParam, string username);
 
+        ResponseHelper GetQuotesAssignByUser(QueryParam queryParam, string username);
+
+        ResponseHelper AdminGetAllQuotes(QueryParam queryParam, string username);
+
         ResponseHelper GetQuotesDetail(int quotesId);
 
         ResponseHelper GetTaskByOfQuotes(int dealId);

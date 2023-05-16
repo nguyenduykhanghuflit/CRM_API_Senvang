@@ -19,6 +19,8 @@ namespace CRM_Api_Senvang.Repositories.Task
 
         ResponseHelper AdminConfirmSuccess(TaskDto taskDto, string username);
 
+        ResponseHelper GetTaskAssignToUser(QueryParam queryParam, string username);
+
 
     }
 }

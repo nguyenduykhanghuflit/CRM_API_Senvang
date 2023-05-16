@@ -160,5 +160,39 @@ namespace CRM_Api_Senvang.Repositories.Quotes
 
             return respone.HandleQueryResponese();
         }
+
+        public ResponseHelper GetQuotesAssignByUser(QueryParam queryParam, string username)
+        {
+            string sqlQuery = "khangGetQuotesAssignToUser";
+            List<SqlParameter> parameters = new()
+            {
+                new SqlParameter(parameterName: "@username", value: username),
+                new SqlParameter(parameterName: "@PageNumber", value: queryParam.PageNumber),
+                new SqlParameter(parameterName: "@PageSize", value: queryParam.PageSize),
+                new SqlParameter(parameterName: "@StartDate", value: queryParam.StartDate),
+                new SqlParameter(parameterName: "@EndDate", value: queryParam.EndDate)
+            };
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone queryRespone = utils.Query(sqlQuery, commandType, parameters.ToArray());
+
+            return queryRespone.HandleQueryResponese();
+        }
+
+        public ResponseHelper AdminGetAllQuotes(QueryParam queryParam, string username)
+        {
+            string sqlQuery = "khangAdminGetAllQuotes";
+            List<SqlParameter> parameters = new()
+            {
+                new SqlParameter(parameterName: "@username", value: username),
+                new SqlParameter(parameterName: "@PageNumber", value: queryParam.PageNumber),
+                new SqlParameter(parameterName: "@PageSize", value: queryParam.PageSize),
+                new SqlParameter(parameterName: "@StartDate", value: queryParam.StartDate),
+                new SqlParameter(parameterName: "@EndDate", value: queryParam.EndDate)
+            };
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone queryRespone = utils.Query(sqlQuery, commandType, parameters.ToArray());
+
+            return queryRespone.HandleQueryResponese();
+        }
     }
 }

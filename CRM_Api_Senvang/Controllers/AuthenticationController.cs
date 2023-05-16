@@ -18,7 +18,7 @@ namespace CRM_Api_Senvang.Controllers
             this.loginRepository = loginRepository;
         }
 
-        // LOGIN
+
         [HttpPost("/api/auth/login")]
         public IActionResult Login(UserLoginDto userLogin)
         {

@@ -12,10 +12,16 @@ namespace CRM_Api_Senvang.Repositories.Deal
 
         ResponseHelper GetDealCreateByUser(QueryParam queryParam, string username);
 
+        ResponseHelper GetDealAssignByUser(QueryParam queryParam, string username);
+
+        ResponseHelper AdminGetAllDeal(QueryParam queryParam, string username);
+
         ResponseHelper GetDealDetail(int dealId);
 
         ResponseHelper DeleteDeal(int dealId, string username);
 
         ResponseHelper UpdateDealStatus(int dealId, int statusId, string username);
+
+
     }
 }

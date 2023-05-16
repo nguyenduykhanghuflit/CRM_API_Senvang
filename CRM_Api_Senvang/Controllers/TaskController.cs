@@ -52,7 +52,25 @@ namespace CRM_Api_Senvang.Controllers
             return Ok(_taskRepository.UserUpdateProgressOrStatus(progressOrUserDto, username));
         }
 
+        [HttpPost("/api/task/assign/user")]
+        [Authorize]
+        public IActionResult GetDealAssginToUser(QueryParam queryParam)
+        {
 
+            string username = _tokenHelper.GetUsername(HttpContext);
+
+            if (queryParam.PageSize > 20 || queryParam.PageSize < 1)
+            {
+                queryParam.PageSize = 20;
+            }
+
+            if (queryParam.PageNumber < 1)
+            {
+                queryParam.PageNumber = 1;
+            }
+
+            return Ok(_taskRepository.GetTaskAssignToUser(queryParam, username).HandleResponse());
+        }
 
 
     }
