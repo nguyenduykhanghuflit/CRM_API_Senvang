@@ -131,5 +131,35 @@ namespace CRM_Api_Senvang.Repositories.Deal
             return respone.HandleQueryResponese();
 
         }
+
+        public ResponseHelper GetDealAssignByUser(QueryParam queryParam, string username)
+        {
+            string sqlQuery = "khangGetDealAssignToUser";
+            List<SqlParameter> parameters = new()
+            {
+                new SqlParameter(parameterName: "@username", value: username),
+                new SqlParameter(parameterName: "@PageNumber", value: queryParam.PageNumber),
+                new SqlParameter(parameterName: "@PageSize", value: queryParam.PageSize),
+                new SqlParameter(parameterName: "@StartDate", value: queryParam.StartDate),
+                new SqlParameter(parameterName: "@EndDate", value: queryParam.EndDate)
+            };
+            QueryRespone deals = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
+            return deals.HandleQueryResponese();
+        }
+
+        public ResponseHelper AdminGetAllDeal(QueryParam queryParam, string username)
+        {
+            string sqlQuery = "khangAdminGetAllDeal";
+            List<SqlParameter> parameters = new()
+            {
+                new SqlParameter(parameterName: "@username", value: username),
+                new SqlParameter(parameterName: "@PageNumber", value: queryParam.PageNumber),
+                new SqlParameter(parameterName: "@PageSize", value: queryParam.PageSize),
+                new SqlParameter(parameterName: "@StartDate", value: queryParam.StartDate),
+                new SqlParameter(parameterName: "@EndDate", value: queryParam.EndDate)
+            };
+            QueryRespone deals = utils.Query(sqlQuery, CommandType.StoredProcedure, parameters.ToArray());
+            return deals.HandleQueryResponese();
+        }
     }
 }

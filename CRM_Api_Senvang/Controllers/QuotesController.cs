@@ -41,6 +41,24 @@ namespace CRM_Api_Senvang.Controllers
             return Ok(_quotesRepository.GetQuotesDeal(queryParam, username).HandleResponse());
         }
 
+        [HttpPost("/api/quotes/assign/user")]
+        [Authorize]
+        public IActionResult GetQuotesAssginToUser(QueryParam queryParam)
+        {
+            string username = _tokenHelper.GetUsername(HttpContext);
+
+            if (queryParam.PageSize > 20 || queryParam.PageSize < 1)
+            {
+                queryParam.PageSize = 20;
+            }
+
+            if (queryParam.PageNumber < 1)
+            {
+                queryParam.PageNumber = 1;
+            }
+            return Ok(_quotesRepository.GetQuotesAssignByUser(queryParam, username).HandleResponse());
+        }
+
         [HttpPost("/api/quotes/detail")]
         [Authorize]
         public IActionResult GetQuotesDetail(Quotes quotes)
