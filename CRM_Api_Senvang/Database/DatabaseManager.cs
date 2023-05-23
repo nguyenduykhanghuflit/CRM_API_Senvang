@@ -63,5 +63,5 @@ namespace CRM_Api_Senvang.Database
         }
     }
 }
-//tham khảo: https://www.edwindeloso.com/how-to-create-generic-data-access-layer-in-ado-net/comment-page-1/
+
 

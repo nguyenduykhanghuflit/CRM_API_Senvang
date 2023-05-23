@@ -22,9 +22,9 @@ using System.Numerics;
 using System.Text.Json;
 using System.IdentityModel.Tokens.Jwt;
 using Newtonsoft.Json.Linq;
-
 using SqlParameter = System.Data.SqlClient.SqlParameter;
 using CRM_Api_Senvang.Models;
+using Nest;
 
 namespace CRM_Api_Senvang.Controllers.Controllers
 {
@@ -35,11 +35,13 @@ namespace CRM_Api_Senvang.Controllers.Controllers
     {
         private readonly SqlHelper sqlHelper;
         private readonly TokenHelper tokenHelper;
+        private readonly Utils utils;
 
-        public TestController(SqlHelper sqlHelper, TokenHelper tokenHelper)
+        public TestController(SqlHelper sqlHelper, TokenHelper tokenHelper, Utils utils)
         {
             this.sqlHelper = sqlHelper;
             this.tokenHelper = tokenHelper;
+            this.utils = utils;
         }
 
         // TEST SERVER
@@ -50,6 +52,25 @@ namespace CRM_Api_Senvang.Controllers.Controllers
             return Ok("Oke server");
         }
 
+        [HttpGet("/location")]
+        public IActionResult DistanceBetweenPlaces(double lat2, double lon2)
+        {
+            double lat1 = 10.7651521, lon1 = 106.7066008;
+            /*    a = sin²(Δlat/2) + cos(lat1).cos(lat2).sin²(Δlong/2)
+                  c = 2.atan2(√a, √(1−a))
+                  d = R.c*/
+            const double RADIUS = 6378.16; //bán kính trung bình trái đất
+            double dlon = utils.Radians(lon2 - lon1);
+            double dlat = utils.Radians(lat2 - lat1);
+
+            double a = (Math.Sin(dlat / 2) * Math.Sin(dlat / 2)) +
+                     (Math.Cos(utils.Radians(lat1)) * Math.Cos(utils.Radians(lat2)) * (Math.Sin(dlon / 2) * Math.Sin(dlon / 2)));
+
+            double angle = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+            var distance = (angle * RADIUS);
+            return Ok((distance * 1000));
+
+        }
 
         // DEAL
         [HttpGet("/api/internship/getdeals")]
