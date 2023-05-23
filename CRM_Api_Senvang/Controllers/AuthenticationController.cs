@@ -40,11 +40,7 @@ namespace CRM_Api_Senvang.Controllers
 
             var result = loginRepository.Login(userLogin.Username);
 
-            //danh sách các Quotes được tạo bởi Deal của user đăng nhập trong ngày 
-            // store username in firebase
-
-
-
+          
             response = new ResponseHelper(1, "Success", result);
             return Ok(response.HandleResponse());
 

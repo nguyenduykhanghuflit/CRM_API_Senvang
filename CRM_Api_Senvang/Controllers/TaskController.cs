@@ -42,8 +42,6 @@ namespace CRM_Api_Senvang.Controllers
             return Ok(_taskRepository.GetTaskDetail(taskDto).HandleResponse());
         }
 
-
-
         [HttpPost("/api/user/task/update")]
         [Authorize]
         public IActionResult UserUpdateProgressOrStatus(UpdateTaskProgressOrUserDto progressOrUserDto)

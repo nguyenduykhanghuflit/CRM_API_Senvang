@@ -6,6 +6,8 @@ using System.Text;
 using Microsoft.AspNetCore.Mvc.Routing;
 using System.Data.SqlClient;
 using System.Data;
+using CRM_Api_Senvang.Repositories.Customer;
+using Nest;
 
 namespace CRM_Api_Senvang.Helpers
 {
@@ -29,11 +31,11 @@ namespace CRM_Api_Senvang.Helpers
             return jsonTop10.Replace("\"", "\'").Replace("\n", " ");
         }
 
-
         public bool LoginInfoValid(string username, string password)
         {
             return username.Length <= 20 && password.Length <= 10;
         }
+
         public string HashPasswordSHA256(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
@@ -42,7 +44,6 @@ namespace CRM_Api_Senvang.Helpers
                 return Convert.ToHexString(hashValue);
             }
         }
-
 
         public QueryRespone Query(string sqlQuery, CommandType commandType = CommandType.StoredProcedure,
             params SqlParameter[]? sqlParameters)
@@ -70,6 +71,35 @@ namespace CRM_Api_Senvang.Helpers
                 return new QueryRespone(true, "Query error: " + ex.Message, "");
 
             }
+        }
+
+        public double Radians(double x)
+        {
+            const double PIx = 3.141592653589793;
+            return x * PIx / 180;
+        }
+
+
+        public bool IsPhoneNumberBelongsToCustomer(string phone)
+        {
+            string sqlQuery = "khangFindCustomerByPhoneOrId";
+            List<SqlParameter> parameters = new()
+            {
+                new SqlParameter(parameterName: "@input", value: phone)
+            };
+
+            var commandType = CommandType.StoredProcedure;
+            QueryRespone customer = Query(sqlQuery, commandType, parameters.ToArray());
+            var res = customer.HandleQueryResponese();
+            if (res.ErrCode < 0)
+            {
+                throw new Exception($"Server error:Error when find customer -->{res.Message}");
+            }
+
+            List<dynamic>? customers = (List<dynamic>?)res.Data;
+            if (customers?.Count > 0) return true;
+
+            return false;
         }
 
 

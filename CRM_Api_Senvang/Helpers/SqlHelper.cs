@@ -53,8 +53,6 @@ namespace CRM_Api_Senvang.Helpers
 
         }
 
-
-
         private static Dictionary<string, object> ReadData(SqlDataReader reader)
         {
 

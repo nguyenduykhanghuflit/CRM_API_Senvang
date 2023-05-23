@@ -12,13 +12,13 @@ namespace CRM_Api_Senvang.Helpers
         private readonly string _secretKey;
 
 
-
         public TokenHelper(IConfiguration configuration)
         {
 
             _secretKey = configuration["Jwt:Key"];
 
         }
+
         public string GenerateToken(string username, string role)
         {
             var jwtTokenHandler = new JwtSecurityTokenHandler();

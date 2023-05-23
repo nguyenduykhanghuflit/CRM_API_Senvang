@@ -5,22 +5,16 @@ namespace CRM_Api_Senvang.Models
 
     public class Quotes
     {
-
         public int QuotesId { get; set; }
-
     }
     public class Deal
     {
-
         public int DealId { get; set; }
-
     }
 
     public class User
     {
-
         public string Username { get; set; }
-
     }
 
     public class UserLoginDto : User
@@ -34,20 +28,17 @@ namespace CRM_Api_Senvang.Models
         public int autoId { get; set; }
     }
 
-    public class QuotesDto : Quotes
-    {
-
-
-
-    }
-
     public class NewDealDto
     {
         public int OppTypeId { get; set; }
         public string Title { get; set; }
         public int? ObjectID { get; set; }
         public string CustName { get; set; }
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Entered phone format is not valid.")]
         public string Phone { get; set; }
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         public string Email { get; set; }
         public DateTime? Openning { get; set; }
         public DateTime? DeployDate { get; set; }
@@ -96,11 +87,6 @@ namespace CRM_Api_Senvang.Models
     public class UpdateDealStatus : Deal
     {
         public int StatusId { get; set; }
-    }
-
-    public class NewCustomer
-    {
-
     }
 
     public class FindCustomerDto

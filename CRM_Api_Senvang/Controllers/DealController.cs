@@ -16,14 +16,15 @@ namespace CRM_Api_Senvang.Controllers
         private readonly ICustomerRepository _customerRepository;
         private readonly IDealRepository _dealRepository;
         private readonly TokenHelper _tokenHelper;
+        private readonly Utils _utils;
 
 
-        public DealController(ICustomerRepository customerRepository, IDealRepository dealRepository, TokenHelper tokenHelper)
+        public DealController(ICustomerRepository customerRepository, IDealRepository dealRepository, TokenHelper tokenHelper, Utils utils)
         {
             _customerRepository = customerRepository;
             _dealRepository = dealRepository;
             _tokenHelper = tokenHelper;
-
+            _utils = utils;
         }
 
 
@@ -32,14 +33,24 @@ namespace CRM_Api_Senvang.Controllers
         public IActionResult CreateDeal(NewDealDto dealDto)
         {
 
-            //bug tạo deal lỗi nhưng vẫn tạo khách hàng
-
             string username = _tokenHelper.GetUsername(HttpContext);
 
+            /*
+             * Nếu không có ObjectId
+                 *Sđt đã tồn tại trong db -> báo lỗi đã có khách hàng này
+                 *Sđt chưa tồn tại trong db -> tạo khách hàng mới
+            */
             if (dealDto.ObjectID == null || dealDto.ObjectID == 0)
             {
-                int autoId = _customerRepository.CreateCustomer(dealDto.CustName, dealDto.Phone, dealDto.Email, username);
 
+                bool hasCustomer = _utils.IsPhoneNumberBelongsToCustomer(dealDto.Phone);
+
+                if (hasCustomer)
+                {
+                    return Ok(new ResponseHelper(-1, "This phone number already exists in the system", null).HandleResponse());
+                }
+
+                int autoId = _customerRepository.CreateCustomer(dealDto.CustName, dealDto.Phone, dealDto.Email, username);
                 dealDto.ObjectID = autoId;
             }
 
@@ -124,4 +135,7 @@ namespace CRM_Api_Senvang.Controllers
         }
 
     }
+
+
+
 }

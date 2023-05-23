@@ -27,8 +27,6 @@ namespace CRM_Api_Senvang.Controllers
             return Ok(_statusesRepository.GetDealStatus().HandleResponse());
         }
 
-
-
         [HttpGet("/api/status/quotes")]
         [Authorize]
         public IActionResult GetQuotesStatus()
@@ -37,9 +35,6 @@ namespace CRM_Api_Senvang.Controllers
             return Ok(_statusesRepository.GetQuotesStatus().HandleResponse());
         }
 
-
-
-
         [HttpGet("/api/status/task")]
         [Authorize]
         public IActionResult GetTaskStatus()
@@ -47,7 +42,6 @@ namespace CRM_Api_Senvang.Controllers
 
             return Ok(_statusesRepository.GetTaskStatus().HandleResponse());
         }
-
 
         [HttpGet("/api/priority")]
         [Authorize]
