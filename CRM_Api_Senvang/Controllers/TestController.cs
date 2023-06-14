@@ -25,6 +25,11 @@ using Newtonsoft.Json.Linq;
 using SqlParameter = System.Data.SqlClient.SqlParameter;
 using CRM_Api_Senvang.Models;
 using Nest;
+using KmlToGeoJson;
+using System.Xml;
+using System.Xml.Linq;
+using Newtonsoft.Json;
+using Formatting = System.Xml.Formatting;
 
 namespace CRM_Api_Senvang.Controllers.Controllers
 {
@@ -122,11 +127,44 @@ namespace CRM_Api_Senvang.Controllers.Controllers
 
         }
 
+
+        [HttpGet("/api/kml")]
+        public IActionResult GetKml()
+        {
+            var xml = XDocument.Load(@"G:\Desktop\gls\gls research\week8\CRM_Api_Senvang\CRM_Api_Senvang\Files\TradeZone.kml");
+            return Ok(xml.ToString());
+
+        }
+
+
+        [HttpPost("/api/upload")]
+        public async Task<IActionResult> Upload(IFormFile file)
+        {
+            try
+            {
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "Files", "TradeZone.kml");
+                var stream = new FileStream(path, FileMode.Create);
+                await file.CopyToAsync(stream);
+                return Ok(new { length = file.Length, name = "TradeZone.kml" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
+
+
+
     }
 
 
-
-
-
-
 }
+
+
+
+
+
+
+

@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>thaydoi
+</name>
+    <Style id="icon-1899-0288D1-normal">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1899-0288D1-highlight">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1899-0288D1">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-0288D1-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-0288D1-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1899-0288D1-nodesc-normal">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-0288D1-nodesc-highlight">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-1899-0288D1-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-0288D1-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-0288D1-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1899-FFD600-normal">
+      <IconStyle>
+        <color>ff00d6ff</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1899-FFD600-highlight">
+      <IconStyle>
+        <color>ff00d6ff</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1899-FFD600">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-FFD600-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-FFD600-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="poly-000000-1200-77-nodesc-normal">
+      <LineStyle>
+        <color>ff000000</color>
+        <width>1.2</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4d000000</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="poly-000000-1200-77-nodesc-highlight">
+      <LineStyle>
+        <color>ff000000</color>
+        <width>1.8</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4d000000</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="poly-000000-1200-77-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#poly-000000-1200-77-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#poly-000000-1200-77-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="poly-817717-1200-77-nodesc-normal">
+      <LineStyle>
+        <color>ff177781</color>
+        <width>1.2</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4d177781</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="poly-817717-1200-77-nodesc-highlight">
+      <LineStyle>
+        <color>ff177781</color>
+        <width>1.8</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4d177781</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="poly-817717-1200-77-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#poly-817717-1200-77-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#poly-817717-1200-77-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="poly-FFD600-1200-77-normal">
+      <LineStyle>
+        <color>ff00d6ff</color>
+        <width>1.2</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4d00d6ff</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <Style id="poly-FFD600-1200-77-highlight">
+      <LineStyle>
+        <color>ff00d6ff</color>
+        <width>1.8</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4d00d6ff</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <StyleMap id="poly-FFD600-1200-77">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#poly-FFD600-1200-77-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#poly-FFD600-1200-77-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Placemark>
+      <name>Công ty Sen Vàng Solution</name>
+      <description><![CDATA[<img src="https://doc-0g-ao-mymaps.googleusercontent.com/untrusted/hostedimage/qs21mijsctbvk763g3h74f72qo/k1epbaih0p3o3e9jk43eq2po6s/1685336747250/nB3h_g04pwU-SQOUs4Jd5Y9jNNEX7CmI/14377970037076522813/5ACtvi-GzmZXr50iIM2AsCualqXWSBUVZHgrOpanz-JdvrJGtrQfaYgT-UkBe1X5VImGUtS_3A_aWnKb2DYcfRNwYRd8qkDxb43GCR-h1r3u2DHx3f8UCZ469GbvPhJidJEYBpD9YNviztHJOlw2eo6HWlrt9cNE5NHs10_d7M8eKNRmqH1vYY96k4s4xPKUmq_gru3WtsDZtGFbumsndczugbaH5XkgkKMc9e_qXxR2DMRx6ajY?session=0&fife" height="200" width="auto" /><br><br>]]></description>
+      <styleUrl>#icon-1899-FFD600</styleUrl>
+      <ExtendedData>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://doc-0g-ao-mymaps.googleusercontent.com/untrusted/hostedimage/qs21mijsctbvk763g3h74f72qo/k1epbaih0p3o3e9jk43eq2po6s/1685336747250/nB3h_g04pwU-SQOUs4Jd5Y9jNNEX7CmI/14377970037076522813/5ACtvi-GzmZXr50iIM2AsCualqXWSBUVZHgrOpanz-JdvrJGtrQfaYgT-UkBe1X5VImGUtS_3A_aWnKb2DYcfRNwYRd8qkDxb43GCR-h1r3u2DHx3f8UCZ469GbvPhJidJEYBpD9YNviztHJOlw2eo6HWlrt9cNE5NHs10_d7M8eKNRmqH1vYY96k4s4xPKUmq_gru3WtsDZtGFbumsndczugbaH5XkgkKMc9e_qXxR2DMRx6ajY?session=0&fife]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          106.7065578,10.7651176,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Zone 2</name>
+      <description>Chi nhánh 4</description>
+      <styleUrl>#poly-FFD600-1200-77</styleUrl>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <tessellate>1</tessellate>
+            <coordinates>
+              106.7059852,10.765462,0
+              106.7056989,10.7653447,0
+              106.7058484,10.7650549,0
+              106.7062669,10.7652051,0
+              106.7061395,10.7654949,0
+              106.7059852,10.765462,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Zone 1</name>
+      <styleUrl>#poly-817717-1200-77-nodesc</styleUrl>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <tessellate>1</tessellate>
+            <coordinates>
+              106.7062669,10.7652051,0
+              106.706365,10.7649942,0
+              106.7066104,10.7650957,0
+              106.7062564,10.765794,0
+              106.7059613,10.7656978,0
+              106.7061424,10.765483,0
+              106.7062669,10.7652051,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Zone 3</name>
+      <styleUrl>#poly-000000-1200-77-nodesc</styleUrl>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <tessellate>1</tessellate>
+            <coordinates>
+              106.7061293,10.7654949,0
+              106.7059626,10.7656965,0
+              106.7057873,10.765877,0
+              106.7054922,10.765794,0
+              106.7057002,10.7653434,0
+              106.7059865,10.7654607,0
+              106.7061293,10.7654949,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Chi nhánh 1 zone 1</name>
+      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          106.7064468,10.7653482,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Chi nhánh 2 zone 1</name>
+      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          106.7063824,10.7650558,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Chi nhánh 1 zone 2</name>
+      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          106.7059157,10.7652389,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>chi nhánh 1 zone 3</name>
+      <description>zone 3</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>
+          106.7058198,10.7655432,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Chi nhánh 2 zone 2</name>
+      <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+      <Point>
+        <coordinates>
+          106.7060666,10.7653923,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>
